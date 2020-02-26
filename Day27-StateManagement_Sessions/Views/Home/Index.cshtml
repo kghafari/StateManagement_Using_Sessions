@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@using Microsoft.AspNetCore.Http
+
+<form action="../Home/SaveUserName" method="post" class="form-control">
+    <input type="text" name="userName" value="" />
+    <input type="submit" class="btn-outline-success" value="Send it!" />
+</form>
+
+@{
+    @* setting up Session in view*@
+    var userName = Context.Session.GetString("SessionName");
+    if (userName != null)
+    {
+        <li class="nav-item text-dark" >
+            Hi @userName
+        </li>
+    }
+}
